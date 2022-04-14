@@ -1,0 +1,998 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print { 
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+  --title-color: #8064a9;
+  --text-color: #444444;
+  --light-text-color: #666666;
+  --lighter-text-color: #888888;
+  --link-color: #2aa899;
+  --code-color: #745fb5;
+
+  --shadow-color: #eee;
+  --border-quote: rgba(116, 95, 181, 0.2);
+  --border: #e7e7e7;
+  --link-bottom: #bbb;
+  --shadow: 3px 3px 10px var(--shadow-color);
+  --inline-code-bg: #f4f2f9;
+
+  --header-weight: normal;
+
+  --side-bar-bg-color: #fafafa;
+  --control-text-color: var(var(--light-text-color));
+  --active-file-text-color: var(--title-color);
+  --active-file-bg-color: var(--shadow-color);
+  --item-hover-bg-color: var(--shadow-color);
+  --active-file-border-color: var(var(--title-color));
+
+  --base-font:  -apple-system, "Helvetica Neue", Ubuntu,
+    "Microsoft YaHei", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans",
+    "Noto Sans CJK SC", "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC",
+    "Source Han Sans CN", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti",
+    SimHei, "WenQuanYi Zen Hei Sharp", "Source Sans Pro", sans-serif;
+  --title-font: "EB Garamond", Georgia, "Noto Serif", "Noto Serif CJK SC",
+    "Nimbus Roman No9 L", "Songti SC", "Source Han Serif SC",
+    "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun,
+    SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN",
+    "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU,
+    "Ubuntu", "Source Sans Pro", serif;
+  --monospace: "JetBrains Mono", "Fira Code", "Cascadia Code", "Sarasa Term SC",
+    Monaco, "Deja Vu Sans Mono", Consolas, "Lucida Console", "Andale Mono",
+    "Roboto Mono", Courier, Monospace !important;
+}
+
+/* 打印 */
+@media print {
+  html {
+    font-size: 0.9rem;
+  }
+
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+
+  pre {
+    word-wrap: break-word;
+  }
+  #write {
+    max-width: 100%;
+  }
+  @page {
+    size: A3; /* PDF output size */
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: initial;
+}
+
+body {
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6rem;
+  letter-spacing: 0;
+  overflow-x: hidden;
+}
+
+/* 页边距 和 页面大小 */
+#write {
+  font-family: var(--base-font);
+  /* max-width: 914px; */
+  margin: 0 auto;
+  padding: 1rem 4rem;
+  padding-bottom: 100px;
+}
+
+#write p {
+  line-height: 1.6rem;
+  word-spacing: 0.05rem;
+}
+
+body > *:first-child {
+  margin-top: 0 !important;
+}
+
+body > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Link 链接 */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+#write a {
+  border-bottom: 1px solid var(--link-bottom);
+}
+#write a:hover {
+  border-bottom: 1px solid var(--link-color);
+  /*   color: var(--link-color);
+    text-decoration: none; */
+}
+
+.md-content {
+  color: var(--light-text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: var(--header-weight);
+  line-height: 1.3;
+  cursor: text;
+  color: var(--title-color);
+  font-family: var(--title-font);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.25em;
+  margin-bottom: 2rem;
+}
+h1:after {
+  content: "";
+  display: block;
+  margin: 0.2em auto 0;
+  width: 6rem;
+  height: 2px;
+  border-bottom: 2px solid var(--title-color);
+}
+
+h2 {
+  padding-left: 0.4em;
+  font-size: 1.75em;
+  border-left: 0.4em solid var(--title-color);
+  border-bottom: 1px solid var(--title-color);
+}
+h3 {
+  font-size: 1.5em;
+}
+h4 {
+  font-size: 1.3em;
+}
+h5 {
+  font-size: 1.2em;
+}
+h6 {
+  font-size: 1.1em;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+  margin: 0.8em 0;
+}
+
+/* horizontal rule */
+hr {
+  margin: 1.5em 0;
+  border-top: 4px double #7f60a9;
+  border-radius: 25px;
+}
+
+/* 列表 */
+li > ol,
+li > ul {
+  margin: 0 0;
+}
+
+li p.first {
+  display: inline-block;
+}
+
+ul,
+ol {
+  padding-left: 2rem;
+}
+
+
+
+ul:first-child,
+ol:first-child {
+  margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+#write ol li,
+ul li {
+  padding-left: 0.1rem;
+}
+
+/* 引用 */
+blockquote {
+  border-left: 0.3rem solid var(--border-quote);
+  padding-left: 1em;
+  color: var(--light-text-color);
+  font-family: var(--base-font);
+}
+
+/* 表格 */
+
+#table_wrap > table {
+  margin-bottom: 1.25rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: var(--shadow);
+}
+
+table th,
+table td {
+  padding: 8px;
+  line-height: 1.25rem;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+}
+
+/*重新设置table第一行上边边框*/
+table tr th {
+  border-top: 0;
+}
+/*重新设置table第一行左边边框*/
+table tr th:first-child {
+  border-left: 0;
+}
+/*重新设置table第一行右边边框*/
+table tr th:last-child {
+  border-right: 0;
+}
+/*重新设置table最后一行下边边框*/
+table tr:last-child td {
+  border-bottom: 0;
+}
+/*重新设置table最后一行左边边框*/
+table tr:last-child td:first-child {
+  border-left: 0;
+}
+/*重新设置table最后一行右边边框*/
+table tr:last-child td:last-child {
+  border-right: 0;
+}
+
+/*改变每个块的颜色*/
+
+table tr:nth-child(2n),
+thead {
+  background-color: #ccccff; 
+} 
+
+table tbody tr:nth-child(2n+1) {
+  background-color: #eaeaea;
+}
+
+
+
+table tr:first-child th:first-child {
+  border-top-left-radius: 12px;
+}
+
+table tr:first-child th:last-child {
+  border-top-right-radius: 12px;
+}
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+/* 粗体 */
+#write strong {
+  padding: 0 2px;
+  font-weight: bold;
+}
+
+/* inline code */
+#write code,
+tt {
+  padding: 2px 4px;
+  border-radius: 0.3rem;
+  font-family: var(--monospace);
+  font-size: 0.9rem;
+  color: var(--code-color);
+  background-color: var(--inline-code-bg);
+  margin: 0 2px;
+}
+
+#write .md-footnote {
+  color: var(--code-color);
+  background-color: var(--inline-code-bg);
+}
+
+/* highlight. */
+#write mark {
+  background: rgb(255, 255, 196);
+}
+
+#write del {
+  padding: 1px 2px;
+}
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+#write pre.md-meta-block {
+  padding: 1rem;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border: 0;
+  border-radius: 3px;
+  color: #777777;
+  margin-top: 0 !important;
+}
+
+.mathjax-block > .code-tooltip {
+  bottom: 0.375rem;
+}
+
+/* 图片 */
+.md-image > .md-meta {
+  border-radius: 3px;
+  font-family: var(--monospace);
+  padding: 2px 0 0 4px;
+  font-size: 0.9em;
+  color: inherit;
+}
+/* 图片靠左显示 */
+/* p .md-image:only-child {
+  width: auto;
+  text-align: left;
+  margin-left: 2rem;
+} */
+
+/* 写![shadow-...]() 显示图片阴影 */
+img[alt|="shadow"] {
+  box-shadow: var(--shadow);
+}
+
+/* TOC: 加粗h2 */
+#write a.md-toc-inner {
+  line-height: 1.6;
+  white-space: pre-line;
+  border-bottom: none;
+  color: var(--lighter-text-color);
+  font-size: 0.9rem;
+}
+/* .md-toc-h1 {
+  display: none;
+} */
+.md-toc-h2 .md-toc-inner {
+  font-weight: bold;
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+  font-family: var(--base-font);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+  visibility: visible;
+}
+
+.md-lang {
+  color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+  --item-hover-bg-color: #e6f0fe;
+}
+
+/* Code fences */
+
+/* border, bg, font */
+.md-fences {
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: #dddddd !important; /*代码块背景颜色*/
+  font-size: 0.9rem;
+}
+/* 代码框阴影 */
+#write pre.md-fences {
+  display: block;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: var(--shadow);
+}
+
+.cm-s-inner {
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+  color: #3a3432 !important;
+  border: none;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+  color: #6d8a88;
+}
+
+.cm-s-inner .CodeMirror-linenumber {
+  padding: 0 0.1rem 0 0.3rem;
+  color: #b8b5b4;
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: #a34e8f !important;
+}
+
+#fences-auto-suggest .active {
+  background: #ddd;
+}
+
+.cm-s-inner span.cm-comment {
+  color: #9daab6;
+}
+.cm-s-inner span.cm-builtin {
+  color: #0451a5;
+}
+
+/* language tip */
+#write .code-tooltip {
+  border: 1px solid var(--border);
+}
+
+.auto-suggest-container {
+  border-color: #b4b4b4;
+}
+
+.auto-suggest-container .autoComplt-hint.active {
+  background: #b4b4b4;
+  color: inherit;
+}
+
+/* task list */
+#write .md-task-list-item > input {
+  -webkit-appearance: initial;
+  display: block;
+  position: absolute;
+  border: 1px solid #b4b4b4;
+  border-radius: 0.2rem;
+  margin-top: 0.3rem;
+  height: 1rem;
+  width: 1rem;
+  transition: background 0.3s;
+}
+
+#write .md-task-list-item > input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#write .md-task-list-item > input:hover {
+  background: #ddd;
+}
+
+#write .md-task-list-item > input[checked]::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 60%;
+  width: 2px;
+  transform: rotate(40deg);
+  background: #333;
+}
+
+#write .md-task-list-item > input[checked]::after {
+  content: "";
+  position: absolute;
+  top: 46%;
+  left: 25%;
+  height: 30%;
+  width: 2px;
+  transform: rotate(-40deg);
+  background: #333;
+}
+
+#write .md-task-list-item > p {
+  transition: color 0.3s, opacity 0.3s;
+}
+
+#write .md-task-list-item.task-list-done > p {
+  color: #b4b4b4;
+  text-decoration: line-through;
+}
+
+#write .md-task-list-item.task-list-done > p > .md-emoji {
+  opacity: 0.5;
+}
+
+#write .md-task-list-item.task-list-done > p > .md-link > a {
+  opacity: 0.6;
+}
+
+/* sidebar */
+#typora-sidebar,
+.typora-node #typora-sidebar {
+  box-shadow: 3px 0px 10px var(--shadow-color);
+}
+.sidebar-content-content {
+  font-size: 0.9rem;
+}
+
+@import "";
+
+:root {
+  --title-color: var(--text-color);
+  --link-color: var(--lighter-text-color);
+  --code-color: #222222;
+  --border-quote: var(--border);
+  --header-weight: bold;
+  --inline-code-bg: #eee;
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>README</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h2 id='1-解析解'><span>1. 解析解</span></h2><p><span>设输入为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="6.11ex" height="1.136ex" role="img" focusable="false" viewBox="0 -491 2700.4 502" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-51-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-51-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-51-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-51-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(822.2,0)"><use data-c="D7" xlink:href="#MJX-51-TEX-N-D7"></use></g><g data-mml-node="mi" transform="translate(1822.4,0)"><use data-c="1D45A" xlink:href="#MJX-51-TEX-I-1D45A"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>×</mo><mi>m</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">n\times m</script><span>的特征集合</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.966ex" height="1.552ex" role="img" focusable="false" viewBox="0 -686 869 686" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-45-TEX-B-1D417" d="M327 0Q306 3 174 3Q52 3 43 0H33V62H98L162 63L360 333L157 624H48V686H59Q80 683 217 683Q368 683 395 686H408V624H335L393 540L452 458L573 623Q573 624 528 624H483V686H494Q515 683 646 683Q769 683 778 686H787V624H658L575 511Q493 398 493 397L508 376Q522 356 553 312T611 229L727 62H835V0H824Q803 3 667 3Q516 3 489 0H476V62H513L549 63L401 274L247 63Q247 62 292 62H338V0H327Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D417" xlink:href="#MJX-45-TEX-B-1D417"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">X</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{X}</script><span>，输出为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="5.254ex" height="1.532ex" role="img" focusable="false" viewBox="0 -666 2322.4 677" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-53-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-53-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-53-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-53-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(822.2,0)"><use data-c="D7" xlink:href="#MJX-53-TEX-N-D7"></use></g><g data-mml-node="mn" transform="translate(1822.4,0)"><use data-c="31" xlink:href="#MJX-53-TEX-N-31"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>×</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex">n\times 1</script><span>的预测结果</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.373ex" height="1.457ex" role="img" focusable="false" viewBox="0 -444 607 644" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs><path id="MJX-54-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-54-TEX-B-1D432"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">y</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{y}</script><span>，则有：</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n4" cid="n4" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="12.204ex" height="2.023ex" role="img" focusable="false" viewBox="0 -694 5394 894" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs><path id="MJX-1-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-B-1D417" d="M327 0Q306 3 174 3Q52 3 43 0H33V62H98L162 63L360 333L157 624H48V686H59Q80 683 217 683Q368 683 395 686H408V624H335L393 540L452 458L573 623Q573 624 528 624H483V686H494Q515 683 646 683Q769 683 778 686H787V624H658L575 511Q493 398 493 397L508 376Q522 356 553 312T611 229L727 62H835V0H824Q803 3 667 3Q516 3 489 0H476V62H513L549 63L401 274L247 63Q247 62 292 62H338V0H327Z"></path><path id="MJX-1-TEX-B-1D42F" d="M401 444Q413 441 495 441Q568 441 574 444H580V382H510L409 156Q348 18 339 6Q331 -4 320 -4Q318 -4 313 -4T303 -3H288Q273 -3 264 12T221 102Q206 135 197 156L96 382H26V444H34Q49 441 145 441Q252 441 270 444H279V382H231L284 264Q335 149 338 149Q338 150 389 264T442 381Q442 382 418 382H394V444H401Z"></path><path id="MJX-1-TEX-B-2B" d="M64 232T64 250T87 281H416V444Q416 608 418 612Q426 633 446 633T475 613Q477 608 477 444V281H807Q808 280 811 278T817 274T823 269T827 262T829 251Q829 230 807 221L642 220H477V57Q477 -107 475 -112Q468 -131 446 -131Q425 -131 418 -112Q416 -107 416 57V220H251L87 221Q64 232 64 250Z"></path><path id="MJX-1-TEX-B-1D41B" d="M32 686L123 690Q214 694 215 694H221V409Q289 450 378 450Q479 450 539 387T600 221Q600 122 535 58T358 -6H355Q272 -6 203 53L160 1L129 0H98V301Q98 362 98 435T99 525Q99 591 97 604T83 620Q69 624 42 624H29V686H32ZM227 105L232 99Q237 93 242 87T258 73T280 59T306 49T339 45Q380 45 411 66T451 131Q457 160 457 230Q457 264 456 284T448 329T430 367T396 389T343 398Q282 398 235 355L227 348V105Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-1-TEX-B-1D432"></use></g></g><g data-mml-node="mo" transform="translate(884.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1940.6,0)"><g data-mml-node="mi"><use data-c="1D417" xlink:href="#MJX-1-TEX-B-1D417"></use><use data-c="1D42F" xlink:href="#MJX-1-TEX-B-1D42F" transform="translate(869,0)"></use></g><g data-mml-node="mo" transform="translate(1698.2,0)"><use data-c="2B" xlink:href="#MJX-1-TEX-B-2B"></use></g><g data-mml-node="mi" transform="translate(2814.4,0)"><use data-c="1D41B" xlink:href="#MJX-1-TEX-B-1D41B"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">y</mi></mrow><mo>=</mo><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">Xv</mi><mo mathvariant="bold">+</mo><mi mathvariant="bold">b</mi></mrow></math></mjx-assistive-mml></mjx-container></div></div><p><span>显然，我们需要求解</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.373ex" height="1.005ex" role="img" focusable="false" viewBox="0 -444 607 444" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-48-TEX-B-1D42F" d="M401 444Q413 441 495 441Q568 441 574 444H580V382H510L409 156Q348 18 339 6Q331 -4 320 -4Q318 -4 313 -4T303 -3H288Q273 -3 264 12T221 102Q206 135 197 156L96 382H26V444H34Q49 441 145 441Q252 441 270 444H279V382H231L284 264Q335 149 338 149Q338 150 389 264T442 381Q442 382 418 382H394V444H401Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D42F" xlink:href="#MJX-48-TEX-B-1D42F"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">v</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{v}</script><span>和</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.446ex" height="1.584ex" role="img" focusable="false" viewBox="0 -694 639 700" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.014ex;"><defs><path id="MJX-49-TEX-B-1D41B" d="M32 686L123 690Q214 694 215 694H221V409Q289 450 378 450Q479 450 539 387T600 221Q600 122 535 58T358 -6H355Q272 -6 203 53L160 1L129 0H98V301Q98 362 98 435T99 525Q99 591 97 604T83 620Q69 624 42 624H29V686H32ZM227 105L232 99Q237 93 242 87T258 73T280 59T306 49T339 45Q380 45 411 66T451 131Q457 160 457 230Q457 264 456 284T448 329T430 367T396 389T343 398Q282 398 235 355L227 348V105Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D41B" xlink:href="#MJX-49-TEX-B-1D41B"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">b</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{b}</script><span>。</span></p><p><span>对上式进行变形</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock md-rawblock-on-edit" id="mathjax-n7" cid="n7" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-mathblock-panel md-rawblock-panel" contenteditable="false"><div contenteditable="false" class="md-rawblock-control md-rawblock-before">$$
+					<span class="md-math-tag-input ty-input ty-input-before" tabindex="-1" contenteditable="plaintext-only"></span>
+				</div>
+				<div class="md-rawblock-control md-rawblock-input md-mathblock-input">
+				</div>
+				<div contenteditable="false" class="md-rawblock-control md-rawblock-after">$$
+					<span class="md-math-tag-input ty-input ty-input-after" tabindex="-1" contenteditable="plaintext-only"></span>
+				</div>
+				<div class="code-tooltip" contenteditable="false">
+					<div class="md-mathjax-preview" contenteditable="false"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="14.258ex" height="11.31ex" role="img" focusable="false" viewBox="0 -2749.5 6302.2 4999" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -5.089ex;"><defs><path id="MJX-70-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path><path id="MJX-70-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-70-TEX-B-1D417" d="M327 0Q306 3 174 3Q52 3 43 0H33V62H98L162 63L360 333L157 624H48V686H59Q80 683 217 683Q368 683 395 686H408V624H335L393 540L452 458L573 623Q573 624 528 624H483V686H494Q515 683 646 683Q769 683 778 686H787V624H658L575 511Q493 398 493 397L508 376Q522 356 553 312T611 229L727 62H835V0H824Q803 3 667 3Q516 3 489 0H476V62H513L549 63L401 274L247 63Q247 62 292 62H338V0H327Z"></path><path id="MJX-70-TEX-B-1D42F" d="M401 444Q413 441 495 441Q568 441 574 444H580V382H510L409 156Q348 18 339 6Q331 -4 320 -4Q318 -4 313 -4T303 -3H288Q273 -3 264 12T221 102Q206 135 197 156L96 382H26V444H34Q49 441 145 441Q252 441 270 444H279V382H231L284 264Q335 149 338 149Q338 150 389 264T442 381Q442 382 418 382H394V444H401Z"></path><path id="MJX-70-TEX-B-2B" d="M64 232T64 250T87 281H416V444Q416 608 418 612Q426 633 446 633T475 613Q477 608 477 444V281H807Q808 280 811 278T817 274T823 269T827 262T829 251Q829 230 807 221L642 220H477V57Q477 -107 475 -112Q468 -131 446 -131Q425 -131 418 -112Q416 -107 416 57V220H251L87 221Q64 232 64 250Z"></path><path id="MJX-70-TEX-B-1D41B" d="M32 686L123 690Q214 694 215 694H221V409Q289 450 378 450Q479 450 539 387T600 221Q600 122 535 58T358 -6H355Q272 -6 203 53L160 1L129 0H98V301Q98 362 98 435T99 525Q99 591 97 604T83 620Q69 624 42 624H29V686H32ZM227 105L232 99Q237 93 242 87T258 73T280 59T306 49T339 45Q380 45 411 66T451 131Q457 160 457 230Q457 264 456 284T448 329T430 367T396 389T343 398Q282 398 235 355L227 348V105Z"></path><path id="MJX-70-TEX-N-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path id="MJX-70-TEX-B-1D7CF" d="M481 0L294 3Q136 3 109 0H96V62H227V304Q227 546 225 546Q169 529 97 529H80V591H97Q231 591 308 647L319 655H333Q355 655 359 644Q361 640 361 351V62H494V0H481Z"></path><path id="MJX-70-TEX-N-A0" d=""></path><path id="MJX-70-TEX-N-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path><path id="MJX-70-TEX-S3-5B" d="M247 -949V1450H516V1388H309V-887H516V-949H247Z"></path><path id="MJX-70-TEX-S3-5D" d="M11 1388V1450H280V-949H11V-887H218V1388H11Z"></path><path id="MJX-70-TEX-B-1D407" d="M400 0Q376 3 226 3Q75 3 51 0H39V62H147V624H39V686H51Q75 683 226 683Q376 683 400 686H412V624H304V388H595V624H487V686H499Q523 683 673 683Q824 683 848 686H860V624H752V62H860V0H848Q824 3 674 3Q523 3 499 0H487V62H595V326H304V62H412V0H400Z"></path><path id="MJX-70-TEX-B-1D430" d="M624 444Q636 441 722 441Q797 441 800 444H805V382H741L593 11Q592 10 590 8T586 4T584 2T581 0T579 -2T575 -3T571 -3T567 -4T561 -4T553 -4H542Q525 -4 518 6T490 70Q474 110 463 137L415 257L367 137Q357 111 341 72Q320 17 313 7T289 -4H277Q259 -4 253 -2T238 11L90 382H25V444H32Q47 441 140 441Q243 441 261 444H270V382H222L310 164L382 342L366 382H303V444H310Q322 441 407 441Q508 441 523 444H531V382H506Q481 382 481 380Q482 376 529 259T577 142L674 382H617V444H624Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,1999.5)"><g data-mml-node="mtd"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-70-TEX-B-1D432"></use></g></g></g><g data-mml-node="mtd" transform="translate(607,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-70-TEX-N-3D"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1333.6,0)"><g data-mml-node="mi"><use data-c="1D417" xlink:href="#MJX-70-TEX-B-1D417"></use><use data-c="1D42F" xlink:href="#MJX-70-TEX-B-1D42F" transform="translate(869,0)"></use></g><g data-mml-node="mo" transform="translate(1698.2,0)"><use data-c="2B" xlink:href="#MJX-70-TEX-B-2B"></use></g><g data-mml-node="mi" transform="translate(2814.4,0)"><use data-c="1D41B" xlink:href="#MJX-70-TEX-B-1D41B"></use></g></g></g></g><g data-mml-node="mtr"><g data-mml-node="mtd" transform="translate(607,0)"></g><g data-mml-node="mtd" transform="translate(607,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-70-TEX-N-3D"></use></g><g data-mml-node="mrow" transform="translate(1333.6,0)"><g data-mml-node="mo"><use data-c="5B" xlink:href="#MJX-70-TEX-N-5B"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(278,0)"><g data-mml-node="mn"><use data-c="1D7CF" xlink:href="#MJX-70-TEX-B-1D7CF"></use></g></g><g data-mml-node="mtext" transform="translate(853,0)"><use data-c="A0" xlink:href="#MJX-70-TEX-N-A0"></use></g><g data-mml-node="mtext" transform="translate(1103,0)"><use data-c="A0" xlink:href="#MJX-70-TEX-N-A0"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1353,0)"><g data-mml-node="mi"><use data-c="1D417" xlink:href="#MJX-70-TEX-B-1D417"></use></g></g><g data-mml-node="mspace" transform="translate(2222,0)"></g><g data-mml-node="mo" transform="translate(2222,0)"><use data-c="5D" xlink:href="#MJX-70-TEX-N-5D"></use></g></g><g data-mml-node="mrow" transform="translate(4000.2,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="5B" xlink:href="#MJX-70-TEX-S3-5B"></use></g><g data-mml-node="mtable" transform="translate(528,0)"><g data-mml-node="mtr" transform="translate(0,650)"><g data-mml-node="mtd"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D41B" xlink:href="#MJX-70-TEX-B-1D41B"></use></g></g></g></g><g data-mml-node="mtr" transform="translate(0,-650)"><g data-mml-node="mtd" transform="translate(32,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D42F" xlink:href="#MJX-70-TEX-B-1D42F"></use></g></g></g></g></g><g data-mml-node="mo" transform="translate(1167,0) translate(0 -0.5)"><use data-c="5D" xlink:href="#MJX-70-TEX-S3-5D"></use></g></g></g></g><g data-mml-node="mtr" transform="translate(0,-1999.5)"><g data-mml-node="mtd" transform="translate(607,0)"></g><g data-mml-node="mtd" transform="translate(607,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-70-TEX-N-3D"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1333.6,0)"><g data-mml-node="mi"><use data-c="1D407" xlink:href="#MJX-70-TEX-B-1D407"></use><use data-c="1D430" xlink:href="#MJX-70-TEX-B-1D430" transform="translate(900,0)"></use></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">y</mi></mrow></mtd><mtd><mi></mi><mo>=</mo><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">Xv</mi><mo mathvariant="bold">+</mo><mi mathvariant="bold">b</mi></mrow></mtd></mtr><mtr><mtd></mtd><mtd><mi></mi><mo>=</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mrow data-mjx-texclass="ORD"><mn mathvariant="bold">1</mn></mrow><mtext>&nbsp;</mtext><mtext>&nbsp;</mtext><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">X</mi></mrow><mspace linebreak="newline"></mspace><mo data-mjx-texclass="CLOSE">]</mo></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable displaystyle="true" columnalign="right" columnspacing="" rowspacing="3pt"><mtr><mtd><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">b</mi></mrow></mtd></mtr><mtr><mtd><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">v</mi></mrow></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow></mtd></mtr><mtr><mtd></mtd><mtd><mi></mi><mo>=</mo><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">Hw</mi></mrow></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div>
+				</div></div></div><p><span>故等价于求解</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.88ex" height="1.005ex" role="img" focusable="false" viewBox="0 -444 831 444" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-40-TEX-B-1D430" d="M624 444Q636 441 722 441Q797 441 800 444H805V382H741L593 11Q592 10 590 8T586 4T584 2T581 0T579 -2T575 -3T571 -3T567 -4T561 -4T553 -4H542Q525 -4 518 6T490 70Q474 110 463 137L415 257L367 137Q357 111 341 72Q320 17 313 7T289 -4H277Q259 -4 253 -2T238 11L90 382H25V444H32Q47 441 140 441Q243 441 261 444H270V382H222L310 164L382 342L366 382H303V444H310Q322 441 407 441Q508 441 523 444H531V382H506Q481 382 481 380Q482 376 529 259T577 142L674 382H617V444H624Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D430" xlink:href="#MJX-40-TEX-B-1D430"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">w</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{w}</script><span>。</span></p><p><span>已知标准输出为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.373ex" height="2.314ex" role="img" focusable="false" viewBox="0 -823 607 1023" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs><path id="MJX-50-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path><path id="MJX-50-TEX-B-5E" d="M207 632L287 694Q289 693 368 632T448 570T431 545T413 520Q410 520 350 559L287 597L224 559Q164 520 161 520Q160 520 143 544T126 570T207 632Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-50-TEX-B-1D432"></use></g><g data-mml-node="mo" transform="translate(303.5,29) translate(-287.5 0)"><use data-c="5E" xlink:href="#MJX-50-TEX-B-5E"></use></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mover><mi mathvariant="bold">y</mi><mo mathvariant="bold" stretchy="false">^</mo></mover></mrow></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{\hat{y}}</script><span>，损失函数为：</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n10" cid="n10" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="23.239ex" height="2.565ex" role="img" focusable="false" viewBox="0 -817 10271.6 1133.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.717ex;"><defs><path id="MJX-3-TEX-I-1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path><path id="MJX-3-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path id="MJX-3-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path id="MJX-3-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-3-TEX-B-1D430" d="M624 444Q636 441 722 441Q797 441 800 444H805V382H741L593 11Q592 10 590 8T586 4T584 2T581 0T579 -2T575 -3T571 -3T567 -4T561 -4T553 -4H542Q525 -4 518 6T490 70Q474 110 463 137L415 257L367 137Q357 111 341 72Q320 17 313 7T289 -4H277Q259 -4 253 -2T238 11L90 382H25V444H32Q47 441 140 441Q243 441 261 444H270V382H222L310 164L382 342L366 382H303V444H310Q322 441 407 441Q508 441 523 444H531V382H506Q481 382 481 380Q482 376 529 259T577 142L674 382H617V444H624Z"></path><path id="MJX-3-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-3-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-3-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-3-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path><path id="MJX-3-TEX-B-5E" d="M207 632L287 694Q289 693 368 632T448 570T431 545T413 520Q410 520 350 559L287 597L224 559Q164 520 161 520Q160 520 143 544T126 570T207 632Z"></path><path id="MJX-3-TEX-B-2212" d="M119 221Q96 230 96 251T116 279Q121 281 448 281H775Q776 280 779 278T785 274T791 269T795 262T797 251Q797 230 775 221H119Z"></path><path id="MJX-3-TEX-B-1D407" d="M400 0Q376 3 226 3Q75 3 51 0H39V62H147V624H39V686H51Q75 683 226 683Q376 683 400 686H412V624H304V388H595V624H487V686H499Q523 683 673 683Q824 683 848 686H860V624H752V62H860V0H848Q824 3 674 3Q523 3 499 0H487V62H595V326H304V62H412V0H400Z"></path><path id="MJX-3-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,-67)"><g data-mml-node="mtd"><g data-mml-node="mi"><use data-c="1D43F" xlink:href="#MJX-3-TEX-I-1D43F"></use></g><g data-mml-node="mi" transform="translate(681,0)"><use data-c="1D45C" xlink:href="#MJX-3-TEX-I-1D45C"></use></g><g data-mml-node="mi" transform="translate(1166,0)"><use data-c="1D460" xlink:href="#MJX-3-TEX-I-1D460"></use></g><g data-mml-node="mi" transform="translate(1635,0)"><use data-c="1D460" xlink:href="#MJX-3-TEX-I-1D460"></use></g><g data-mml-node="mo" transform="translate(2104,0)"><use data-c="28" xlink:href="#MJX-3-TEX-N-28"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2493,0)"><g data-mml-node="mi"><use data-c="1D430" xlink:href="#MJX-3-TEX-B-1D430"></use></g></g><g data-mml-node="mo" transform="translate(3324,0)"><use data-c="29" xlink:href="#MJX-3-TEX-N-29"></use></g></g><g data-mml-node="mtd" transform="translate(3713,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-3-TEX-N-3D"></use></g><g data-mml-node="mo" transform="translate(1333.6,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-3-TEX-N-7C"></use></g><g data-mml-node="mo" transform="translate(1611.6,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-3-TEX-N-7C"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1889.6,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-3-TEX-B-1D432"></use></g><g data-mml-node="mo" transform="translate(303.5,29) translate(-287.5 0)"><use data-c="5E" xlink:href="#MJX-3-TEX-B-5E"></use></g></g></g><g data-mml-node="mo" transform="translate(829.2,0)"><use data-c="2212" xlink:href="#MJX-3-TEX-B-2212"></use></g><g data-mml-node="mi" transform="translate(1945.4,0)"><use data-c="1D407" xlink:href="#MJX-3-TEX-B-1D407"></use><use data-c="1D430" xlink:href="#MJX-3-TEX-B-1D430" transform="translate(900,0)"></use></g></g><g data-mml-node="mo" transform="translate(5566,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-3-TEX-N-7C"></use></g><g data-mml-node="msup" transform="translate(5844,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-3-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(311,413) scale(0.707)"><use data-c="32" xlink:href="#MJX-3-TEX-N-32"></use></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd><mi>L</mi><mi>o</mi><mi>s</mi><mi>s</mi><mo stretchy="false">(</mo><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">w</mi></mrow><mo stretchy="false">)</mo></mtd><mtd><mi></mi><mo>=</mo><mo data-mjx-texclass="ORD" stretchy="false">|</mo><mo data-mjx-texclass="ORD" stretchy="false">|</mo><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mover><mi mathvariant="bold">y</mi><mo mathvariant="bold" stretchy="false">^</mo></mover></mrow><mo mathvariant="bold">−</mo><mi mathvariant="bold">Hw</mi></mrow><mo data-mjx-texclass="ORD" stretchy="false">|</mo><msup><mo data-mjx-texclass="ORD" stretchy="false">|</mo><mn>2</mn></msup></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p><span>对损失函数求导</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n12" cid="n12" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="20.339ex" height="4.749ex" role="img" focusable="false" viewBox="0 -1391 8989.8 2099" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -1.602ex;"><defs><path id="MJX-4-TEX-I-1D715" d="M202 508Q179 508 169 520T158 547Q158 557 164 577T185 624T230 675T301 710L333 715H345Q378 715 384 714Q447 703 489 661T549 568T566 457Q566 362 519 240T402 53Q321 -22 223 -22Q123 -22 73 56Q42 102 42 148V159Q42 276 129 370T322 465Q383 465 414 434T455 367L458 378Q478 461 478 515Q478 603 437 639T344 676Q266 676 223 612Q264 606 264 572Q264 547 246 528T202 508ZM430 306Q430 372 401 400T333 428Q270 428 222 382Q197 354 183 323T150 221Q132 149 132 116Q132 21 232 21Q244 21 250 22Q327 35 374 112Q389 137 409 196T430 306Z"></path><path id="MJX-4-TEX-I-1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path><path id="MJX-4-TEX-B-1D430" d="M624 444Q636 441 722 441Q797 441 800 444H805V382H741L593 11Q592 10 590 8T586 4T584 2T581 0T579 -2T575 -3T571 -3T567 -4T561 -4T553 -4H542Q525 -4 518 6T490 70Q474 110 463 137L415 257L367 137Q357 111 341 72Q320 17 313 7T289 -4H277Q259 -4 253 -2T238 11L90 382H25V444H32Q47 441 140 441Q243 441 261 444H270V382H222L310 164L382 342L366 382H303V444H310Q322 441 407 441Q508 441 523 444H531V382H506Q481 382 481 380Q482 376 529 259T577 142L674 382H617V444H624Z"></path><path id="MJX-4-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-4-TEX-B-1D407" d="M400 0Q376 3 226 3Q75 3 51 0H39V62H147V624H39V686H51Q75 683 226 683Q376 683 400 686H412V624H304V388H595V624H487V686H499Q523 683 673 683Q824 683 848 686H860V624H752V62H860V0H848Q824 3 674 3Q523 3 499 0H487V62H595V326H304V62H412V0H400Z"></path><path id="MJX-4-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-4-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-4-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-4-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path><path id="MJX-4-TEX-N-5E" d="M112 560L249 694L257 686Q387 562 387 560L361 531Q359 532 303 581L250 627L195 580Q182 569 169 557T148 538L140 532Q138 530 125 546L112 560Z"></path><path id="MJX-4-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mfrac"><g data-mml-node="mrow" transform="translate(295,676)"><g data-mml-node="mi"><use data-c="1D715" xlink:href="#MJX-4-TEX-I-1D715"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(566,0)"><g data-mml-node="mi"><use data-c="1D43F" xlink:href="#MJX-4-TEX-I-1D43F"></use></g></g></g><g data-mml-node="mrow" transform="translate(220,-686)"><g data-mml-node="mi"><use data-c="1D715" xlink:href="#MJX-4-TEX-I-1D715"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(566,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D430" xlink:href="#MJX-4-TEX-B-1D430"></use></g></g></g></g><rect width="1597" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(2114.8,0)"><use data-c="3D" xlink:href="#MJX-4-TEX-N-3D"></use></g><g data-mml-node="msup" transform="translate(3170.6,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D407" xlink:href="#MJX-4-TEX-B-1D407"></use></g></g><g data-mml-node="mi" transform="translate(933,413) scale(0.707)"><use data-c="1D447" xlink:href="#MJX-4-TEX-I-1D447"></use></g></g><g data-mml-node="mo" transform="translate(4651.4,0)"><use data-c="28" xlink:href="#MJX-4-TEX-N-28"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(5040.4,0)"><g data-mml-node="mi"><use data-c="1D407" xlink:href="#MJX-4-TEX-B-1D407"></use><use data-c="1D430" xlink:href="#MJX-4-TEX-B-1D430" transform="translate(900,0)"></use></g></g><g data-mml-node="mo" transform="translate(6993.6,0)"><use data-c="2212" xlink:href="#MJX-4-TEX-N-2212"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(7993.8,0)"><g data-mml-node="mover"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-4-TEX-B-1D432"></use></g></g><g data-mml-node="mo" transform="translate(303.5,18) translate(-250 0)"><use data-c="5E" xlink:href="#MJX-4-TEX-N-5E"></use></g></g></g><g data-mml-node="mo" transform="translate(8600.8,0)"><use data-c="29" xlink:href="#MJX-4-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mfrac><mrow><mi>∂</mi><mrow data-mjx-texclass="ORD"><mi>L</mi></mrow></mrow><mrow><mi>∂</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">w</mi></mrow></mrow></mrow></mfrac><mo>=</mo><msup><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">H</mi></mrow><mi>T</mi></msup><mo stretchy="false">(</mo><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">Hw</mi></mrow><mo>−</mo><mrow data-mjx-texclass="ORD"><mover><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">y</mi></mrow><mo stretchy="false">^</mo></mover></mrow><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container></div></div><p><span>当损失函数的导数为0时取极小值，此时</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n14" cid="n14" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="20.76ex" height="2.583ex" role="img" focusable="false" viewBox="0 -891.7 9175.8 1141.7" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-5-TEX-B-1D430" d="M624 444Q636 441 722 441Q797 441 800 444H805V382H741L593 11Q592 10 590 8T586 4T584 2T581 0T579 -2T575 -3T571 -3T567 -4T561 -4T553 -4H542Q525 -4 518 6T490 70Q474 110 463 137L415 257L367 137Q357 111 341 72Q320 17 313 7T289 -4H277Q259 -4 253 -2T238 11L90 382H25V444H32Q47 441 140 441Q243 441 261 444H270V382H222L310 164L382 342L366 382H303V444H310Q322 441 407 441Q508 441 523 444H531V382H506Q481 382 481 380Q482 376 529 259T577 142L674 382H617V444H624Z"></path><path id="MJX-5-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-5-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-5-TEX-B-1D407" d="M400 0Q376 3 226 3Q75 3 51 0H39V62H147V624H39V686H51Q75 683 226 683Q376 683 400 686H412V624H304V388H595V624H487V686H499Q523 683 673 683Q824 683 848 686H860V624H752V62H860V0H848Q824 3 674 3Q523 3 499 0H487V62H595V326H304V62H412V0H400Z"></path><path id="MJX-5-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-5-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-5-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-5-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-5-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path><path id="MJX-5-TEX-N-5E" d="M112 560L249 694L257 686Q387 562 387 560L361 531Q359 532 303 581L250 627L195 580Q182 569 169 557T148 538L140 532Q138 530 125 546L112 560Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D430" xlink:href="#MJX-5-TEX-B-1D430"></use></g></g><g data-mml-node="mo" transform="translate(1108.8,0)"><use data-c="3D" xlink:href="#MJX-5-TEX-N-3D"></use></g><g data-mml-node="mo" transform="translate(2164.6,0)"><use data-c="28" xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(2553.6,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D407" xlink:href="#MJX-5-TEX-B-1D407"></use></g></g><g data-mml-node="mi" transform="translate(933,413) scale(0.707)"><use data-c="1D447" xlink:href="#MJX-5-TEX-I-1D447"></use></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4034.4,0)"><g data-mml-node="mi"><use data-c="1D407" xlink:href="#MJX-5-TEX-B-1D407"></use></g></g><g data-mml-node="msup" transform="translate(4934.4,0)"><g data-mml-node="mo"><use data-c="29" xlink:href="#MJX-5-TEX-N-29"></use></g><g data-mml-node="TeXAtom" transform="translate(422,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-5-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(778,0)"><use data-c="31" xlink:href="#MJX-5-TEX-N-31"></use></g></g></g><g data-mml-node="mo" transform="translate(6310,0)"><use data-c="28" xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(6699,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D407" xlink:href="#MJX-5-TEX-B-1D407"></use></g></g><g data-mml-node="mi" transform="translate(933,413) scale(0.707)"><use data-c="1D447" xlink:href="#MJX-5-TEX-I-1D447"></use></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(8179.8,0)"><g data-mml-node="mover"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-5-TEX-B-1D432"></use></g></g><g data-mml-node="mo" transform="translate(303.5,18) translate(-250 0)"><use data-c="5E" xlink:href="#MJX-5-TEX-N-5E"></use></g></g></g><g data-mml-node="mo" transform="translate(8786.8,0)"><use data-c="29" xlink:href="#MJX-5-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">w</mi></mrow><mo>=</mo><mo stretchy="false">(</mo><msup><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">H</mi></mrow><mi>T</mi></msup><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">H</mi></mrow><msup><mo stretchy="false">)</mo><mrow data-mjx-texclass="ORD"><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">(</mo><msup><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">H</mi></mrow><mi>T</mi></msup><mrow data-mjx-texclass="ORD"><mover><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">y</mi></mrow><mo stretchy="false">^</mo></mover></mrow><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container></div></div><p><span>因此，在</span><code>closed_form_solution</code><span>函数中填充核心代码：</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 14.5px; left: 32px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 24px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -24px; width: 24px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">weights</span> = <span class="cm-variable">np</span>.<span class="cm-property">linalg</span>.<span class="cm-property">inv</span>(<span class="cm-variable">H</span>.<span class="cm-property">T</span>.<span class="cm-property">dot</span>(<span class="cm-variable">H</span>)).<span class="cm-property">dot</span>(<span class="cm-variable">H</span>.<span class="cm-property">T</span>).<span class="cm-property">dot</span>(<span class="cm-variable">Y</span>)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 25px;"></div><div class="CodeMirror-gutters" style="height: 25px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 24px;"></div></div></div></div></pre><p><span>最终的</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.373ex" height="1.005ex" role="img" focusable="false" viewBox="0 -444 607 444" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-48-TEX-B-1D42F" d="M401 444Q413 441 495 441Q568 441 574 444H580V382H510L409 156Q348 18 339 6Q331 -4 320 -4Q318 -4 313 -4T303 -3H288Q273 -3 264 12T221 102Q206 135 197 156L96 382H26V444H34Q49 441 145 441Q252 441 270 444H279V382H231L284 264Q335 149 338 149Q338 150 389 264T442 381Q442 382 418 382H394V444H401Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D42F" xlink:href="#MJX-48-TEX-B-1D42F"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">v</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{v}</script><span>和</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.446ex" height="1.584ex" role="img" focusable="false" viewBox="0 -694 639 700" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.014ex;"><defs><path id="MJX-49-TEX-B-1D41B" d="M32 686L123 690Q214 694 215 694H221V409Q289 450 378 450Q479 450 539 387T600 221Q600 122 535 58T358 -6H355Q272 -6 203 53L160 1L129 0H98V301Q98 362 98 435T99 525Q99 591 97 604T83 620Q69 624 42 624H29V686H32ZM227 105L232 99Q237 93 242 87T258 73T280 59T306 49T339 45Q380 45 411 66T451 131Q457 160 457 230Q457 264 456 284T448 329T430 367T396 389T343 398Q282 398 235 355L227 348V105Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D41B" xlink:href="#MJX-49-TEX-B-1D41B"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">b</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{b}</script><span>为：</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 14.5px; left: 32px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 24px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>2</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -24px; width: 24px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">bias</span> = <span class="cm-variable">weights</span>[<span class="cm-number">0</span>]</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 17px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">weights</span> = <span class="cm-variable">weights</span>[<span class="cm-number">1</span>:]</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 50px;"></div><div class="CodeMirror-gutters" style="height: 50px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 24px;"></div></div></div></div></pre><p><span>预测结果为：</span></p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h19akt1zjpj20od04adgt.jpg" referrerpolicy="no-referrer" alt="output1"></p><p><span>在验证集上的Loss为：67.84</span></p><h2 id='2-梯度下降法'><span>2. 梯度下降法</span></h2><p><span>设输入为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="6.11ex" height="1.136ex" role="img" focusable="false" viewBox="0 -491 2700.4 502" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-51-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-51-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-51-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-51-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(822.2,0)"><use data-c="D7" xlink:href="#MJX-51-TEX-N-D7"></use></g><g data-mml-node="mi" transform="translate(1822.4,0)"><use data-c="1D45A" xlink:href="#MJX-51-TEX-I-1D45A"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>×</mo><mi>m</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">n\times m</script><span>的特征集合</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.966ex" height="1.552ex" role="img" focusable="false" viewBox="0 -686 869 686" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-45-TEX-B-1D417" d="M327 0Q306 3 174 3Q52 3 43 0H33V62H98L162 63L360 333L157 624H48V686H59Q80 683 217 683Q368 683 395 686H408V624H335L393 540L452 458L573 623Q573 624 528 624H483V686H494Q515 683 646 683Q769 683 778 686H787V624H658L575 511Q493 398 493 397L508 376Q522 356 553 312T611 229L727 62H835V0H824Q803 3 667 3Q516 3 489 0H476V62H513L549 63L401 274L247 63Q247 62 292 62H338V0H327Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D417" xlink:href="#MJX-45-TEX-B-1D417"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">X</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{X}</script><span>，输出为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="5.254ex" height="1.532ex" role="img" focusable="false" viewBox="0 -666 2322.4 677" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-53-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-53-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-53-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-53-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(822.2,0)"><use data-c="D7" xlink:href="#MJX-53-TEX-N-D7"></use></g><g data-mml-node="mn" transform="translate(1822.4,0)"><use data-c="31" xlink:href="#MJX-53-TEX-N-31"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>×</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex">n\times 1</script><span>的预测结果</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.373ex" height="1.457ex" role="img" focusable="false" viewBox="0 -444 607 644" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs><path id="MJX-54-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-54-TEX-B-1D432"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">y</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{y}</script><span>，则有：</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n24" cid="n24" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="12.204ex" height="2.023ex" role="img" focusable="false" viewBox="0 -694 5394 894" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs><path id="MJX-6-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path><path id="MJX-6-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-6-TEX-B-1D417" d="M327 0Q306 3 174 3Q52 3 43 0H33V62H98L162 63L360 333L157 624H48V686H59Q80 683 217 683Q368 683 395 686H408V624H335L393 540L452 458L573 623Q573 624 528 624H483V686H494Q515 683 646 683Q769 683 778 686H787V624H658L575 511Q493 398 493 397L508 376Q522 356 553 312T611 229L727 62H835V0H824Q803 3 667 3Q516 3 489 0H476V62H513L549 63L401 274L247 63Q247 62 292 62H338V0H327Z"></path><path id="MJX-6-TEX-B-1D42F" d="M401 444Q413 441 495 441Q568 441 574 444H580V382H510L409 156Q348 18 339 6Q331 -4 320 -4Q318 -4 313 -4T303 -3H288Q273 -3 264 12T221 102Q206 135 197 156L96 382H26V444H34Q49 441 145 441Q252 441 270 444H279V382H231L284 264Q335 149 338 149Q338 150 389 264T442 381Q442 382 418 382H394V444H401Z"></path><path id="MJX-6-TEX-B-2B" d="M64 232T64 250T87 281H416V444Q416 608 418 612Q426 633 446 633T475 613Q477 608 477 444V281H807Q808 280 811 278T817 274T823 269T827 262T829 251Q829 230 807 221L642 220H477V57Q477 -107 475 -112Q468 -131 446 -131Q425 -131 418 -112Q416 -107 416 57V220H251L87 221Q64 232 64 250Z"></path><path id="MJX-6-TEX-B-1D41B" d="M32 686L123 690Q214 694 215 694H221V409Q289 450 378 450Q479 450 539 387T600 221Q600 122 535 58T358 -6H355Q272 -6 203 53L160 1L129 0H98V301Q98 362 98 435T99 525Q99 591 97 604T83 620Q69 624 42 624H29V686H32ZM227 105L232 99Q237 93 242 87T258 73T280 59T306 49T339 45Q380 45 411 66T451 131Q457 160 457 230Q457 264 456 284T448 329T430 367T396 389T343 398Q282 398 235 355L227 348V105Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-6-TEX-B-1D432"></use></g></g><g data-mml-node="mo" transform="translate(884.8,0)"><use data-c="3D" xlink:href="#MJX-6-TEX-N-3D"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1940.6,0)"><g data-mml-node="mi"><use data-c="1D417" xlink:href="#MJX-6-TEX-B-1D417"></use><use data-c="1D42F" xlink:href="#MJX-6-TEX-B-1D42F" transform="translate(869,0)"></use></g><g data-mml-node="mo" transform="translate(1698.2,0)"><use data-c="2B" xlink:href="#MJX-6-TEX-B-2B"></use></g><g data-mml-node="mi" transform="translate(2814.4,0)"><use data-c="1D41B" xlink:href="#MJX-6-TEX-B-1D41B"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">y</mi></mrow><mo>=</mo><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">Xv</mi><mo mathvariant="bold">+</mo><mi mathvariant="bold">b</mi></mrow></math></mjx-assistive-mml></mjx-container></div></div><p><span>显然，我们需要求解</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.373ex" height="1.005ex" role="img" focusable="false" viewBox="0 -444 607 444" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-48-TEX-B-1D42F" d="M401 444Q413 441 495 441Q568 441 574 444H580V382H510L409 156Q348 18 339 6Q331 -4 320 -4Q318 -4 313 -4T303 -3H288Q273 -3 264 12T221 102Q206 135 197 156L96 382H26V444H34Q49 441 145 441Q252 441 270 444H279V382H231L284 264Q335 149 338 149Q338 150 389 264T442 381Q442 382 418 382H394V444H401Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D42F" xlink:href="#MJX-48-TEX-B-1D42F"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">v</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{v}</script><span>和</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.446ex" height="1.584ex" role="img" focusable="false" viewBox="0 -694 639 700" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.014ex;"><defs><path id="MJX-49-TEX-B-1D41B" d="M32 686L123 690Q214 694 215 694H221V409Q289 450 378 450Q479 450 539 387T600 221Q600 122 535 58T358 -6H355Q272 -6 203 53L160 1L129 0H98V301Q98 362 98 435T99 525Q99 591 97 604T83 620Q69 624 42 624H29V686H32ZM227 105L232 99Q237 93 242 87T258 73T280 59T306 49T339 45Q380 45 411 66T451 131Q457 160 457 230Q457 264 456 284T448 329T430 367T396 389T343 398Q282 398 235 355L227 348V105Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D41B" xlink:href="#MJX-49-TEX-B-1D41B"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">b</mi></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{b}</script><span>。</span></p><p><span>已知标准输出为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.373ex" height="2.314ex" role="img" focusable="false" viewBox="0 -823 607 1023" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.452ex;"><defs><path id="MJX-50-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path><path id="MJX-50-TEX-B-5E" d="M207 632L287 694Q289 693 368 632T448 570T431 545T413 520Q410 520 350 559L287 597L224 559Q164 520 161 520Q160 520 143 544T126 570T207 632Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mover"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-50-TEX-B-1D432"></use></g><g data-mml-node="mo" transform="translate(303.5,29) translate(-287.5 0)"><use data-c="5E" xlink:href="#MJX-50-TEX-B-5E"></use></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mover><mi mathvariant="bold">y</mi><mo mathvariant="bold" stretchy="false">^</mo></mover></mrow></mrow></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mathbf{\hat{y}}</script><span>，损失函数为：</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n27" cid="n27" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" contenteditable="false" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="23.916ex" height="2.565ex" role="img" focusable="false" viewBox="0 -817 10571 1133.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.717ex;"><defs><path id="MJX-69-TEX-I-1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path><path id="MJX-69-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-69-TEX-B-1D430" d="M624 444Q636 441 722 441Q797 441 800 444H805V382H741L593 11Q592 10 590 8T586 4T584 2T581 0T579 -2T575 -3T571 -3T567 -4T561 -4T553 -4H542Q525 -4 518 6T490 70Q474 110 463 137L415 257L367 137Q357 111 341 72Q320 17 313 7T289 -4H277Q259 -4 253 -2T238 11L90 382H25V444H32Q47 441 140 441Q243 441 261 444H270V382H222L310 164L382 342L366 382H303V444H310Q322 441 407 441Q508 441 523 444H531V382H506Q481 382 481 380Q482 376 529 259T577 142L674 382H617V444H624Z"></path><path id="MJX-69-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-69-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-69-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-69-TEX-B-1D417" d="M327 0Q306 3 174 3Q52 3 43 0H33V62H98L162 63L360 333L157 624H48V686H59Q80 683 217 683Q368 683 395 686H408V624H335L393 540L452 458L573 623Q573 624 528 624H483V686H494Q515 683 646 683Q769 683 778 686H787V624H658L575 511Q493 398 493 397L508 376Q522 356 553 312T611 229L727 62H835V0H824Q803 3 667 3Q516 3 489 0H476V62H513L549 63L401 274L247 63Q247 62 292 62H338V0H327Z"></path><path id="MJX-69-TEX-B-1D42F" d="M401 444Q413 441 495 441Q568 441 574 444H580V382H510L409 156Q348 18 339 6Q331 -4 320 -4Q318 -4 313 -4T303 -3H288Q273 -3 264 12T221 102Q206 135 197 156L96 382H26V444H34Q49 441 145 441Q252 441 270 444H279V382H231L284 264Q335 149 338 149Q338 150 389 264T442 381Q442 382 418 382H394V444H401Z"></path><path id="MJX-69-TEX-B-2B" d="M64 232T64 250T87 281H416V444Q416 608 418 612Q426 633 446 633T475 613Q477 608 477 444V281H807Q808 280 811 278T817 274T823 269T827 262T829 251Q829 230 807 221L642 220H477V57Q477 -107 475 -112Q468 -131 446 -131Q425 -131 418 -112Q416 -107 416 57V220H251L87 221Q64 232 64 250Z"></path><path id="MJX-69-TEX-B-1D41B" d="M32 686L123 690Q214 694 215 694H221V409Q289 450 378 450Q479 450 539 387T600 221Q600 122 535 58T358 -6H355Q272 -6 203 53L160 1L129 0H98V301Q98 362 98 435T99 525Q99 591 97 604T83 620Q69 624 42 624H29V686H32ZM227 105L232 99Q237 93 242 87T258 73T280 59T306 49T339 45Q380 45 411 66T451 131Q457 160 457 230Q457 264 456 284T448 329T430 367T396 389T343 398Q282 398 235 355L227 348V105Z"></path><path id="MJX-69-TEX-B-2212" d="M119 221Q96 230 96 251T116 279Q121 281 448 281H775Q776 280 779 278T785 274T791 269T795 262T797 251Q797 230 775 221H119Z"></path><path id="MJX-69-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path><path id="MJX-69-TEX-B-5E" d="M207 632L287 694Q289 693 368 632T448 570T431 545T413 520Q410 520 350 559L287 597L224 559Q164 520 161 520Q160 520 143 544T126 570T207 632Z"></path><path id="MJX-69-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,-67)"><g data-mml-node="mtd"><g data-mml-node="mi"><use data-c="1D43F" xlink:href="#MJX-69-TEX-I-1D43F"></use></g><g data-mml-node="mo" transform="translate(681,0)"><use data-c="28" xlink:href="#MJX-69-TEX-N-28"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1070,0)"><g data-mml-node="mi"><use data-c="1D430" xlink:href="#MJX-69-TEX-B-1D430"></use></g></g><g data-mml-node="mo" transform="translate(1901,0)"><use data-c="29" xlink:href="#MJX-69-TEX-N-29"></use></g></g><g data-mml-node="mtd" transform="translate(2290,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-69-TEX-N-3D"></use></g><g data-mml-node="mo" transform="translate(1333.6,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-69-TEX-N-7C"></use></g><g data-mml-node="mo" transform="translate(1611.6,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-69-TEX-N-7C"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1889.6,0)"><g data-mml-node="mi"><use data-c="1D417" xlink:href="#MJX-69-TEX-B-1D417"></use><use data-c="1D42F" xlink:href="#MJX-69-TEX-B-1D42F" transform="translate(869,0)"></use></g><g data-mml-node="mo" transform="translate(1698.2,0)"><use data-c="2B" xlink:href="#MJX-69-TEX-B-2B"></use></g><g data-mml-node="mi" transform="translate(2814.4,0)"><use data-c="1D41B" xlink:href="#MJX-69-TEX-B-1D41B"></use></g><g data-mml-node="mo" transform="translate(3675.7,0)"><use data-c="2212" xlink:href="#MJX-69-TEX-B-2212"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4791.9,0)"><g data-mml-node="mover"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-69-TEX-B-1D432"></use></g><g data-mml-node="mo" transform="translate(303.5,29) translate(-287.5 0)"><use data-c="5E" xlink:href="#MJX-69-TEX-B-5E"></use></g></g></g></g><g data-mml-node="mo" transform="translate(7288.4,0) translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-69-TEX-N-7C"></use></g><g data-mml-node="msup" transform="translate(7566.4,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-69-TEX-N-7C"></use></g><g data-mml-node="mn" transform="translate(311,413) scale(0.707)"><use data-c="32" xlink:href="#MJX-69-TEX-N-32"></use></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd><mi>L</mi><mo stretchy="false">(</mo><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">w</mi></mrow><mo stretchy="false">)</mo></mtd><mtd><mi></mi><mo>=</mo><mo data-mjx-texclass="ORD" stretchy="false">|</mo><mo data-mjx-texclass="ORD" stretchy="false">|</mo><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">Xv</mi><mo mathvariant="bold">+</mo><mi mathvariant="bold">b</mi><mo mathvariant="bold">−</mo><mrow data-mjx-texclass="ORD"><mover><mi mathvariant="bold">y</mi><mo mathvariant="bold" stretchy="false">^</mo></mover></mrow></mrow><mo data-mjx-texclass="ORD" stretchy="false">|</mo><msup><mo data-mjx-texclass="ORD" stretchy="false">|</mo><mn>2</mn></msup></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p><span>对损失函数求导，</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n29" cid="n29" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="27.256ex" height="10.176ex" role="img" focusable="false" viewBox="0 -2499 12047.2 4498" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -4.523ex;"><defs><path id="MJX-8-TEX-S4-23A7" d="M712 899L718 893V876V865Q718 854 704 846Q627 793 577 710T510 525Q510 524 509 521Q505 493 504 349Q504 345 504 334Q504 277 504 240Q504 -2 503 -4Q502 -8 494 -9T444 -10Q392 -10 390 -9Q387 -8 386 -5Q384 5 384 230Q384 262 384 312T383 382Q383 481 392 535T434 656Q510 806 664 892L677 899H712Z"></path><path id="MJX-8-TEX-S4-23A9" d="M718 -893L712 -899H677L666 -893Q542 -825 468 -714T385 -476Q384 -466 384 -282Q384 3 385 5L389 9Q392 10 444 10Q486 10 494 9T503 4Q504 2 504 -239V-310V-366Q504 -470 508 -513T530 -609Q546 -657 569 -698T617 -767T661 -812T699 -843T717 -856T718 -876V-893Z"></path><path id="MJX-8-TEX-S4-23A8" d="M389 1159Q391 1160 455 1160Q496 1160 498 1159Q501 1158 502 1155Q504 1145 504 924Q504 691 503 682Q494 549 425 439T243 259L229 250L243 241Q349 175 421 66T503 -182Q504 -191 504 -424Q504 -600 504 -629T499 -659H498Q496 -660 444 -660T390 -659Q387 -658 386 -655Q384 -645 384 -425V-282Q384 -176 377 -116T342 10Q325 54 301 92T255 155T214 196T183 222T171 232Q170 233 170 250T171 268Q171 269 191 284T240 331T300 407T354 524T383 679Q384 691 384 925Q384 1152 385 1155L389 1159Z"></path><path id="MJX-8-TEX-S4-23AA" d="M384 150V266Q384 304 389 309Q391 310 455 310Q496 310 498 309Q502 308 503 298Q504 283 504 150Q504 32 504 12T499 -9H498Q496 -10 444 -10T390 -9Q386 -8 385 2Q384 17 384 150Z"></path><path id="MJX-8-TEX-I-1D715" d="M202 508Q179 508 169 520T158 547Q158 557 164 577T185 624T230 675T301 710L333 715H345Q378 715 384 714Q447 703 489 661T549 568T566 457Q566 362 519 240T402 53Q321 -22 223 -22Q123 -22 73 56Q42 102 42 148V159Q42 276 129 370T322 465Q383 465 414 434T455 367L458 378Q478 461 478 515Q478 603 437 639T344 676Q266 676 223 612Q264 606 264 572Q264 547 246 528T202 508ZM430 306Q430 372 401 400T333 428Q270 428 222 382Q197 354 183 323T150 221Q132 149 132 116Q132 21 232 21Q244 21 250 22Q327 35 374 112Q389 137 409 196T430 306Z"></path><path id="MJX-8-TEX-B-1D40B" d="M643 285Q641 280 629 148T612 4V0H39V62H147V624H39V686H51Q75 683 228 683Q415 685 425 686H439V624H304V62H352H378Q492 62 539 138Q551 156 558 178T569 214T576 255T581 289H643V285Z"></path><path id="MJX-8-TEX-B-1D42F" d="M401 444Q413 441 495 441Q568 441 574 444H580V382H510L409 156Q348 18 339 6Q331 -4 320 -4Q318 -4 313 -4T303 -3H288Q273 -3 264 12T221 102Q206 135 197 156L96 382H26V444H34Q49 441 145 441Q252 441 270 444H279V382H231L284 264Q335 149 338 149Q338 150 389 264T442 381Q442 382 418 382H394V444H401Z"></path><path id="MJX-8-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-8-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-8-TEX-B-1D417" d="M327 0Q306 3 174 3Q52 3 43 0H33V62H98L162 63L360 333L157 624H48V686H59Q80 683 217 683Q368 683 395 686H408V624H335L393 540L452 458L573 623Q573 624 528 624H483V686H494Q515 683 646 683Q769 683 778 686H787V624H658L575 511Q493 398 493 397L508 376Q522 356 553 312T611 229L727 62H835V0H824Q803 3 667 3Q516 3 489 0H476V62H513L549 63L401 274L247 63Q247 62 292 62H338V0H327Z"></path><path id="MJX-8-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-8-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-8-TEX-B-2B" d="M64 232T64 250T87 281H416V444Q416 608 418 612Q426 633 446 633T475 613Q477 608 477 444V281H807Q808 280 811 278T817 274T823 269T827 262T829 251Q829 230 807 221L642 220H477V57Q477 -107 475 -112Q468 -131 446 -131Q425 -131 418 -112Q416 -107 416 57V220H251L87 221Q64 232 64 250Z"></path><path id="MJX-8-TEX-B-1D41B" d="M32 686L123 690Q214 694 215 694H221V409Q289 450 378 450Q479 450 539 387T600 221Q600 122 535 58T358 -6H355Q272 -6 203 53L160 1L129 0H98V301Q98 362 98 435T99 525Q99 591 97 604T83 620Q69 624 42 624H29V686H32ZM227 105L232 99Q237 93 242 87T258 73T280 59T306 49T339 45Q380 45 411 66T451 131Q457 160 457 230Q457 264 456 284T448 329T430 367T396 389T343 398Q282 398 235 355L227 348V105Z"></path><path id="MJX-8-TEX-B-2212" d="M119 221Q96 230 96 251T116 279Q121 281 448 281H775Q776 280 779 278T785 274T791 269T795 262T797 251Q797 230 775 221H119Z"></path><path id="MJX-8-TEX-B-1D432" d="M84 -102Q84 -110 87 -119T102 -138T133 -149Q148 -148 162 -143T186 -131T206 -114T222 -95T234 -76T243 -59T249 -45T252 -37L269 0L96 382H26V444H34Q49 441 146 441Q252 441 270 444H279V382H255Q232 382 232 380L337 151L442 382H394V444H401Q413 441 495 441Q568 441 574 444H580V382H510L406 152Q298 -84 297 -87Q269 -139 225 -169T131 -200Q85 -200 54 -172T23 -100Q23 -64 44 -50T87 -35Q111 -35 130 -50T152 -92V-100H84V-102Z"></path><path id="MJX-8-TEX-B-5E" d="M207 632L287 694Q289 693 368 632T448 570T431 545T413 520Q410 520 350 559L287 597L224 559Q164 520 161 520Q160 520 143 544T126 570T207 632Z"></path><path id="MJX-8-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mrow"><g data-mml-node="mo"><use data-c="23A7" xlink:href="#MJX-8-TEX-S4-23A7" transform="translate(0,1600)"></use><use data-c="23A9" xlink:href="#MJX-8-TEX-S4-23A9" transform="translate(0,-1100)"></use><use data-c="23A8" xlink:href="#MJX-8-TEX-S4-23A8" transform="translate(0,0)"></use><svg width="889" height="630" y="1060" x="0" viewBox="0 111 889 630"><use data-c="23AA" xlink:href="#MJX-8-TEX-S4-23AA" transform="scale(1,3.098)"></use></svg><svg width="889" height="630" y="-1190" x="0" viewBox="0 111 889 630"><use data-c="23AA" xlink:href="#MJX-8-TEX-S4-23AA" transform="scale(1,3.098)"></use></svg></g><g data-mml-node="mtable" transform="translate(889,0)"><g data-mml-node="mtr" transform="translate(0,1108)"><g data-mml-node="mtd"><g data-mml-node="mfrac"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mi"><use data-c="1D715" xlink:href="#MJX-8-TEX-I-1D715"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(566,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D40B" xlink:href="#MJX-8-TEX-B-1D40B"></use></g></g></g></g><g data-mml-node="mrow" transform="translate(262.5,-686)"><g data-mml-node="mi"><use data-c="1D715" xlink:href="#MJX-8-TEX-I-1D715"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(566,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D42F" xlink:href="#MJX-8-TEX-B-1D42F"></use></g></g></g></g><rect width="1458" height="60" x="120" y="220"></rect></g></g><g data-mml-node="mtd" transform="translate(1698,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-8-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1333.6,0)"><use data-c="32" xlink:href="#MJX-8-TEX-N-32"></use></g><g data-mml-node="msup" transform="translate(1833.6,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D417" xlink:href="#MJX-8-TEX-B-1D417"></use></g></g><g data-mml-node="mi" transform="translate(902,413) scale(0.707)"><use data-c="1D447" xlink:href="#MJX-8-TEX-I-1D447"></use></g></g><g data-mml-node="mo" transform="translate(3283.4,0)"><use data-c="28" xlink:href="#MJX-8-TEX-N-28"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(3672.4,0)"><g data-mml-node="mi"><use data-c="1D417" xlink:href="#MJX-8-TEX-B-1D417"></use><use data-c="1D42F" xlink:href="#MJX-8-TEX-B-1D42F" transform="translate(869,0)"></use></g><g data-mml-node="mo" transform="translate(1698.2,0)"><use data-c="2B" xlink:href="#MJX-8-TEX-B-2B"></use></g><g data-mml-node="mi" transform="translate(2814.4,0)"><use data-c="1D41B" xlink:href="#MJX-8-TEX-B-1D41B"></use></g><g data-mml-node="mo" transform="translate(3675.7,0)"><use data-c="2212" xlink:href="#MJX-8-TEX-B-2212"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4791.9,0)"><g data-mml-node="mover"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-8-TEX-B-1D432"></use></g><g data-mml-node="mo" transform="translate(303.5,29) translate(-287.5 0)"><use data-c="5E" xlink:href="#MJX-8-TEX-B-5E"></use></g></g></g></g><g data-mml-node="mo" transform="translate(9071.2,0)"><use data-c="29" xlink:href="#MJX-8-TEX-N-29"></use></g></g></g><g data-mml-node="mtr" transform="translate(0,-1291)"><g data-mml-node="mtd"><g data-mml-node="mfrac"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mi"><use data-c="1D715" xlink:href="#MJX-8-TEX-I-1D715"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(566,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D40B" xlink:href="#MJX-8-TEX-B-1D40B"></use></g></g></g></g><g data-mml-node="mrow" transform="translate(246.5,-686)"><g data-mml-node="mi"><use data-c="1D715" xlink:href="#MJX-8-TEX-I-1D715"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(566,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D41B" xlink:href="#MJX-8-TEX-B-1D41B"></use></g></g></g></g><rect width="1458" height="60" x="120" y="220"></rect></g></g><g data-mml-node="mtd" transform="translate(1698,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-8-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1333.6,0)"><use data-c="32" xlink:href="#MJX-8-TEX-N-32"></use></g><g data-mml-node="mo" transform="translate(1833.6,0)"><use data-c="28" xlink:href="#MJX-8-TEX-N-28"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2222.6,0)"><g data-mml-node="mi"><use data-c="1D417" xlink:href="#MJX-8-TEX-B-1D417"></use><use data-c="1D42F" xlink:href="#MJX-8-TEX-B-1D42F" transform="translate(869,0)"></use></g><g data-mml-node="mo" transform="translate(1698.2,0)"><use data-c="2B" xlink:href="#MJX-8-TEX-B-2B"></use></g><g data-mml-node="mi" transform="translate(2814.4,0)"><use data-c="1D41B" xlink:href="#MJX-8-TEX-B-1D41B"></use></g><g data-mml-node="mo" transform="translate(3675.7,0)"><use data-c="2212" xlink:href="#MJX-8-TEX-B-2212"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4791.9,0)"><g data-mml-node="mover"><g data-mml-node="mi"><use data-c="1D432" xlink:href="#MJX-8-TEX-B-1D432"></use></g><g data-mml-node="mo" transform="translate(303.5,29) translate(-287.5 0)"><use data-c="5E" xlink:href="#MJX-8-TEX-B-5E"></use></g></g></g></g><g data-mml-node="mo" transform="translate(7621.4,0)"><use data-c="29" xlink:href="#MJX-8-TEX-N-29"></use></g></g></g></g><g data-mml-node="mo" transform="translate(12047.2,0) translate(0 250)"></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable rowspacing=".5em" columnspacing="1em" displaystyle="true"><mtr><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd><mfrac><mrow><mi>∂</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">L</mi></mrow></mrow></mrow><mrow><mi>∂</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">v</mi></mrow></mrow></mrow></mfrac></mtd><mtd><mi></mi><mo>=</mo><mn>2</mn><msup><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">X</mi></mrow><mi>T</mi></msup><mo stretchy="false">(</mo><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">Xv</mi><mo mathvariant="bold">+</mo><mi mathvariant="bold">b</mi><mo mathvariant="bold">−</mo><mrow data-mjx-texclass="ORD"><mover><mi mathvariant="bold">y</mi><mo mathvariant="bold" stretchy="false">^</mo></mover></mrow></mrow><mo stretchy="false">)</mo></mtd></mtr><mtr><mtd><mfrac><mrow><mi>∂</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">L</mi></mrow></mrow></mrow><mrow><mi>∂</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">b</mi></mrow></mrow></mrow></mfrac></mtd><mtd><mi></mi><mo>=</mo><mn>2</mn><mo stretchy="false">(</mo><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">Xv</mi><mo mathvariant="bold">+</mo><mi mathvariant="bold">b</mi><mo mathvariant="bold">−</mo><mrow data-mjx-texclass="ORD"><mover><mi mathvariant="bold">y</mi><mo mathvariant="bold" stretchy="false">^</mo></mover></mrow></mrow><mo stretchy="false">)</mo></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p><span>迭代</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n31" cid="n31" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" contenteditable="false" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="21.31ex" height="10.176ex" role="img" focusable="false" viewBox="0 -2499 9419.2 4498" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -4.523ex;"><defs><path id="MJX-78-TEX-S4-23A7" d="M712 899L718 893V876V865Q718 854 704 846Q627 793 577 710T510 525Q510 524 509 521Q505 493 504 349Q504 345 504 334Q504 277 504 240Q504 -2 503 -4Q502 -8 494 -9T444 -10Q392 -10 390 -9Q387 -8 386 -5Q384 5 384 230Q384 262 384 312T383 382Q383 481 392 535T434 656Q510 806 664 892L677 899H712Z"></path><path id="MJX-78-TEX-S4-23A9" d="M718 -893L712 -899H677L666 -893Q542 -825 468 -714T385 -476Q384 -466 384 -282Q384 3 385 5L389 9Q392 10 444 10Q486 10 494 9T503 4Q504 2 504 -239V-310V-366Q504 -470 508 -513T530 -609Q546 -657 569 -698T617 -767T661 -812T699 -843T717 -856T718 -876V-893Z"></path><path id="MJX-78-TEX-S4-23A8" d="M389 1159Q391 1160 455 1160Q496 1160 498 1159Q501 1158 502 1155Q504 1145 504 924Q504 691 503 682Q494 549 425 439T243 259L229 250L243 241Q349 175 421 66T503 -182Q504 -191 504 -424Q504 -600 504 -629T499 -659H498Q496 -660 444 -660T390 -659Q387 -658 386 -655Q384 -645 384 -425V-282Q384 -176 377 -116T342 10Q325 54 301 92T255 155T214 196T183 222T171 232Q170 233 170 250T171 268Q171 269 191 284T240 331T300 407T354 524T383 679Q384 691 384 925Q384 1152 385 1155L389 1159Z"></path><path id="MJX-78-TEX-S4-23AA" d="M384 150V266Q384 304 389 309Q391 310 455 310Q496 310 498 309Q502 308 503 298Q504 283 504 150Q504 32 504 12T499 -9H498Q496 -10 444 -10T390 -9Q386 -8 385 2Q384 17 384 150Z"></path><path id="MJX-78-TEX-B-1D42F" d="M401 444Q413 441 495 441Q568 441 574 444H580V382H510L409 156Q348 18 339 6Q331 -4 320 -4Q318 -4 313 -4T303 -3H288Q273 -3 264 12T221 102Q206 135 197 156L96 382H26V444H34Q49 441 145 441Q252 441 270 444H279V382H231L284 264Q335 149 338 149Q338 150 389 264T442 381Q442 382 418 382H394V444H401Z"></path><path id="MJX-78-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-78-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-78-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-78-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-78-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-78-TEX-I-1D6FC" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path><path id="MJX-78-TEX-I-1D715" d="M202 508Q179 508 169 520T158 547Q158 557 164 577T185 624T230 675T301 710L333 715H345Q378 715 384 714Q447 703 489 661T549 568T566 457Q566 362 519 240T402 53Q321 -22 223 -22Q123 -22 73 56Q42 102 42 148V159Q42 276 129 370T322 465Q383 465 414 434T455 367L458 378Q478 461 478 515Q478 603 437 639T344 676Q266 676 223 612Q264 606 264 572Q264 547 246 528T202 508ZM430 306Q430 372 401 400T333 428Q270 428 222 382Q197 354 183 323T150 221Q132 149 132 116Q132 21 232 21Q244 21 250 22Q327 35 374 112Q389 137 409 196T430 306Z"></path><path id="MJX-78-TEX-B-1D40B" d="M643 285Q641 280 629 148T612 4V0H39V62H147V624H39V686H51Q75 683 228 683Q415 685 425 686H439V624H304V62H352H378Q492 62 539 138Q551 156 558 178T569 214T576 255T581 289H643V285Z"></path><path id="MJX-78-TEX-B-1D41B" d="M32 686L123 690Q214 694 215 694H221V409Q289 450 378 450Q479 450 539 387T600 221Q600 122 535 58T358 -6H355Q272 -6 203 53L160 1L129 0H98V301Q98 362 98 435T99 525Q99 591 97 604T83 620Q69 624 42 624H29V686H32ZM227 105L232 99Q237 93 242 87T258 73T280 59T306 49T339 45Q380 45 411 66T451 131Q457 160 457 230Q457 264 456 284T448 329T430 367T396 389T343 398Q282 398 235 355L227 348V105Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr"><g data-mml-node="mtd"><g data-mml-node="mrow"><g data-mml-node="mo"><use data-c="23A7" xlink:href="#MJX-78-TEX-S4-23A7" transform="translate(0,1600)"></use><use data-c="23A9" xlink:href="#MJX-78-TEX-S4-23A9" transform="translate(0,-1100)"></use><use data-c="23A8" xlink:href="#MJX-78-TEX-S4-23A8" transform="translate(0,0)"></use><svg width="889" height="630" y="1060" x="0" viewBox="0 111 889 630"><use data-c="23AA" xlink:href="#MJX-78-TEX-S4-23AA" transform="scale(1,3.098)"></use></svg><svg width="889" height="630" y="-1190" x="0" viewBox="0 111 889 630"><use data-c="23AA" xlink:href="#MJX-78-TEX-S4-23AA" transform="scale(1,3.098)"></use></svg></g><g data-mml-node="mtable" transform="translate(889,0)"><g data-mml-node="mtr" transform="translate(0,1108)"><g data-mml-node="mtd" transform="translate(32,0)"><g data-mml-node="msup"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D42F" xlink:href="#MJX-78-TEX-B-1D42F"></use></g></g><g data-mml-node="TeXAtom" transform="translate(640,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-78-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600,0)"><use data-c="2B" xlink:href="#MJX-78-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(1378,0)"><use data-c="31" xlink:href="#MJX-78-TEX-N-31"></use></g></g></g></g><g data-mml-node="mtd" transform="translate(2049.9,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-78-TEX-N-3D"></use></g><g data-mml-node="msup" transform="translate(1333.6,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D42F" xlink:href="#MJX-78-TEX-B-1D42F"></use></g></g><g data-mml-node="TeXAtom" transform="translate(640,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-78-TEX-I-1D45B"></use></g></g></g><g data-mml-node="mo" transform="translate(2670,0)"><use data-c="2212" xlink:href="#MJX-78-TEX-N-2212"></use></g><g data-mml-node="mfrac" transform="translate(3670.3,0)"><g data-mml-node="mi" transform="translate(220,676)"><use data-c="1D6FC" xlink:href="#MJX-78-TEX-I-1D6FC"></use></g><g data-mml-node="mi" transform="translate(240,-686)"><use data-c="1D45B" xlink:href="#MJX-78-TEX-I-1D45B"></use></g><rect width="840" height="60" x="120" y="220"></rect></g><g data-mml-node="mfrac" transform="translate(4750.3,0)"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mi"><use data-c="1D715" xlink:href="#MJX-78-TEX-I-1D715"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(566,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D40B" xlink:href="#MJX-78-TEX-B-1D40B"></use></g></g></g></g><g data-mml-node="mrow" transform="translate(262.5,-686)"><g data-mml-node="mi"><use data-c="1D715" xlink:href="#MJX-78-TEX-I-1D715"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(566,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D42F" xlink:href="#MJX-78-TEX-B-1D42F"></use></g></g></g></g><rect width="1458" height="60" x="120" y="220"></rect></g></g></g><g data-mml-node="mtr" transform="translate(0,-1291)"><g data-mml-node="mtd"><g data-mml-node="msup"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D41B" xlink:href="#MJX-78-TEX-B-1D41B"></use></g></g><g data-mml-node="TeXAtom" transform="translate(672,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-78-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600,0)"><use data-c="2B" xlink:href="#MJX-78-TEX-N-2B"></use></g><g data-mml-node="mn" transform="translate(1378,0)"><use data-c="31" xlink:href="#MJX-78-TEX-N-31"></use></g></g></g></g><g data-mml-node="mtd" transform="translate(2049.9,0)"><g data-mml-node="mi"></g><g data-mml-node="mo" transform="translate(277.8,0)"><use data-c="3D" xlink:href="#MJX-78-TEX-N-3D"></use></g><g data-mml-node="msup" transform="translate(1333.6,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D41B" xlink:href="#MJX-78-TEX-B-1D41B"></use></g></g><g data-mml-node="TeXAtom" transform="translate(672,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-78-TEX-I-1D45B"></use></g></g></g><g data-mml-node="mo" transform="translate(2702,0)"><use data-c="2212" xlink:href="#MJX-78-TEX-N-2212"></use></g><g data-mml-node="mfrac" transform="translate(3702.3,0)"><g data-mml-node="mi" transform="translate(220,676)"><use data-c="1D6FC" xlink:href="#MJX-78-TEX-I-1D6FC"></use></g><g data-mml-node="mi" transform="translate(240,-686)"><use data-c="1D45B" xlink:href="#MJX-78-TEX-I-1D45B"></use></g><rect width="840" height="60" x="120" y="220"></rect></g><g data-mml-node="mfrac" transform="translate(4782.3,0)"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mi"><use data-c="1D715" xlink:href="#MJX-78-TEX-I-1D715"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(566,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D40B" xlink:href="#MJX-78-TEX-B-1D40B"></use></g></g></g></g><g data-mml-node="mrow" transform="translate(246.5,-686)"><g data-mml-node="mi"><use data-c="1D715" xlink:href="#MJX-78-TEX-I-1D715"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(566,0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D41B" xlink:href="#MJX-78-TEX-B-1D41B"></use></g></g></g></g><rect width="1458" height="60" x="120" y="220"></rect></g></g></g></g><g data-mml-node="mo" transform="translate(9419.2,0) translate(0 250)"></g></g></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable rowspacing=".5em" columnspacing="1em" displaystyle="true"><mtr><mtd><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable displaystyle="true" columnalign="right left" columnspacing="0em" rowspacing="3pt"><mtr><mtd><msup><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">v</mi></mrow><mrow data-mjx-texclass="ORD"><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mtd><mtd><mi></mi><mo>=</mo><msup><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">v</mi></mrow><mrow data-mjx-texclass="ORD"><mi>n</mi></mrow></msup><mo>−</mo><mfrac><mi>α</mi><mi>n</mi></mfrac><mfrac><mrow><mi>∂</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">L</mi></mrow></mrow></mrow><mrow><mi>∂</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">v</mi></mrow></mrow></mrow></mfrac></mtd></mtr><mtr><mtd><msup><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">b</mi></mrow><mrow data-mjx-texclass="ORD"><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mtd><mtd><mi></mi><mo>=</mo><msup><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">b</mi></mrow><mrow data-mjx-texclass="ORD"><mi>n</mi></mrow></msup><mo>−</mo><mfrac><mi>α</mi><mi>n</mi></mfrac><mfrac><mrow><mi>∂</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">L</mi></mrow></mrow></mrow><mrow><mi>∂</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="bold">b</mi></mrow></mrow></mrow></mfrac></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></mtd></mtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><p><span>因此，在</span><code>gradient_descent</code><span>函数中填充核心代码：</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 14.5px; left: 32px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 24px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>7</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -24px; width: 24px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># forward pass</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pre_age</span> = <span class="cm-variable">np</span>.<span class="cm-property">dot</span>(<span class="cm-variable">feature</span>, <span class="cm-variable">weights</span>) <span class="cm-operator">+</span> <span class="cm-variable">bias</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># calculate loss</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">loss</span> = <span class="cm-variable">np</span>.<span class="cm-property">dot</span>((<span class="cm-variable">pre_age</span><span class="cm-operator">-</span><span class="cm-variable">age</span>).<span class="cm-property">T</span>,(<span class="cm-variable">pre_age</span><span class="cm-operator">-</span><span class="cm-variable">age</span>))[<span class="cm-number">0</span>][<span class="cm-number">0</span>] &nbsp;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># calculate gradient</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">gra_w</span> = <span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">np</span>.<span class="cm-property">dot</span>(<span class="cm-variable">feature</span>.<span class="cm-property">T</span>,(<span class="cm-variable">pre_age</span><span class="cm-operator">-</span><span class="cm-variable">age</span>))</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 17px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">gra_b</span> = <span class="cm-number">2</span><span class="cm-operator">*</span><span class="cm-variable">np</span>.<span class="cm-property">sum</span>(<span class="cm-variable">pre_age</span><span class="cm-operator">-</span><span class="cm-variable">age</span>)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 175px;"></div><div class="CodeMirror-gutters" style="height: 175px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 24px;"></div></div></div></div></pre><p><span>更新系数时考虑动量，代码如下：</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 14.5px; left: 32px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 24px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>8</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -24px; width: 24px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># update weights</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">if</span> <span class="cm-keyword">not</span> <span class="cm-variable">e</span>:</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">momentum</span> = <span class="cm-variable">lr</span><span class="cm-operator">/</span><span class="cm-variable">N</span><span class="cm-operator">*</span><span class="cm-variable">np</span>.<span class="cm-property">row_stack</span>((<span class="cm-variable">gra_b</span>,<span class="cm-variable">gra_w</span>))</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">else</span>:</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">momentum</span> = <span class="cm-variable">alpha</span><span class="cm-operator">*</span><span class="cm-variable">lr</span><span class="cm-operator">/</span><span class="cm-variable">N</span><span class="cm-operator">*</span><span class="cm-variable">np</span>.<span class="cm-property">row_stack</span>((<span class="cm-variable">gra_b</span>,<span class="cm-variable">gra_w</span>))<span class="cm-operator">+</span>(<span class="cm-number">1</span><span class="cm-operator">-</span><span class="cm-variable">alpha</span>)<span class="cm-operator">*</span><span class="cm-variable">momentum</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; <span class="cm-comment"># You can also consider the gradient descent with momentum</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">bias</span> -= <span class="cm-variable">momentum</span>[<span class="cm-number">0</span>]</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 17px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">weights</span> -= <span class="cm-variable">momentum</span>[<span class="cm-number">1</span>:]</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 200px;"></div><div class="CodeMirror-gutters" style="height: 200px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 24px;"></div></div></div></div></pre><p><span>先控制动量系数为1（动量系数为1时，即为不考虑动量的情况），学习率为10e-3改变运行周期数，loss为随机运行10次取平均：</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>周期数epoch</span></th><th style='text-align:center;' ><span>动量系数</span></th><th style='text-align:center;' ><span>学习率lr</span></th><th style='text-align:center;' ><span>loss</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>75</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>77.30</span></td></tr><tr><td style='text-align:center;' ><span>100</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>74.54</span></td></tr><tr><td style='text-align:center;' ><span>200</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>67.34</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>64.63</span></td></tr><tr><td style='text-align:center;' ><span>400</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>62.82</span></td></tr></tbody></table></figure><p><span>选择周期数为300，控制动量系数为1，调整学习率：</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>周期数epoch</span></th><th style='text-align:center;' ><span>动量系数</span></th><th style='text-align:center;' ><span>学习率lr</span></th><th style='text-align:center;' ><span>loss</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>64.63</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-4</span></td><td style='text-align:center;' ><span>84.51</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-5</span></td><td style='text-align:center;' ><span>107.94</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-2</span></td><td style='text-align:center;' ><span>64.78</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-1</span></td><td style='text-align:center;' ><span>NaN</span></td></tr></tbody></table></figure><p><span>选择周期数为300，学习率为10e-3，调整动量系数：</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>周期数epoch</span></th><th style='text-align:center;' ><span>动量系数</span></th><th style='text-align:center;' ><span>学习率lr</span></th><th style='text-align:center;' ><span>loss</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>1</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>64.63</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>0.6</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>64.74</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>0.4</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>64.43</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>0.35</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>64.32</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>0.25</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>64.21</span></td></tr><tr><td style='text-align:center;' ><span>300</span></td><td style='text-align:center;' ><span>0.2</span></td><td style='text-align:center;' ><span>10e-3</span></td><td style='text-align:center;' ><span>64.58</span></td></tr></tbody></table></figure><p><span>因此最终的超参数选择为周期数为300，学习率为10e-3，动量系数为0.25，平均损失为64.21。</span></p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h19cqpnrfuj20od04adgt.jpg" referrerpolicy="no-referrer" alt="output2"></p><h2 id='3-随机梯度下降法'><span>3. 随机梯度下降法</span></h2><p><span>使用随机梯度下降时，在每一次迭代中，我们将训练集随机分成大小为batch_size的多组，依次计算每一组的损失函数并求导，从而进行迭代。</span></p><p><span>周期数为300，学习率为10e-3，动量系数为0.25，平均损失为57.65，效果如下：</span></p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h19d3wuik9j20od04agml.jpg" referrerpolicy="no-referrer" alt="output3"></p><p>&nbsp;</p></div></div>
+</body>
+</html>
